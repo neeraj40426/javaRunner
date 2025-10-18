@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${topic} + ' Questions'">Questions</title>
+    <link rel="stylesheet" th:href="@{/css/topic.css}" />
+    <script th:src="@{/js/topic.js}"></script>
+</head>
+<body>
+<h1 th:text="${topic} + ' Questions'"></h1>
+
+<div th:each="q : ${questions}" class="question">
+    <strong th:text="${q.questionno} + '. ' + ${q.question}"></strong>
+    <button type="button"
+            class="show-code-btn"
+            th:attr="data-topic=${topic}, data-questionno=${q.questionno}">
+        Show Code
+    </button>
+    <pre th:attr="id='code-' + ${q.questionno}"></pre>
+</div>
+</body>
+</html>

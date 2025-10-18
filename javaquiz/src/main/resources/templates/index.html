@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java Runner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <script th:src="@{/js/practice.js}"></script>
+</head>
+<body>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a class="logo" th:href="@{/index}">JavaRunner</a>
+        <ul>
+            <li><a th:href="@{/index}">🏠 Home</a></li>
+            <li class="dropdown">
+                <a th:href="@{/practice}">📝 Practice</a>
+                <ul class="dropdown-menu">
+                    <li th:each="t : ${topics}">
+                        <a th:href="@{/practice(topic=${t.dbName})}"  th:text="${t.displayName}">Topic Name</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a th:href="@{/about}">ℹ️ About</a></li>
+        </ul>
+    </div>
+</nav>
+<header class="hero">
+    <div class="hero-content">
+        <h1>Java Runner</h1>
+        <p>Practice Java coding online with instant execution and interactive feedback!</p>
+
+        <ul class="hero-features">
+            <li><i class="fas fa-terminal"></i> Run Java programs instantly</li>
+            <li><i class="fas fa-edit"></i> Interactive editor with syntax highlighting</li>
+            <li><i class="fas fa-check-circle"></i> Test your code with custom inputs</li>
+        </ul>
+
+        <a th:href="@{/practice}" class="btn-hero">Start Coding</a>
+    </div>
+
+    <div class="hero-image">
+        <div class="code-wrapper">
+        <pre class="code-snippet">
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, JavaRunner!");
+    }
+}
+        </pre>
+        </div>
+    </div>
+</header>
+
+
+<section id="about-java" class="about-section">
+    <h2>About Java</h2>
+    <p>
+        Java is a versatile, object-oriented programming language used worldwide.
+        Write once, run anywhere! It powers web apps, mobile apps, games, and enterprise solutions.
+    </p>
+
+    <div class="java-features">
+        <div class="feature-card">
+            <i class="fas fa-globe"></i>
+            <h3>Platform Independent</h3>
+            <p>Java programs run on any operating system with the Java Virtual Machine (JVM).</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-lock"></i>
+            <h3>Secure</h3>
+            <p>Built-in security features make Java a trusted language for networked applications.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-cogs"></i>
+            <h3>Robust & Reliable</h3>
+            <p>Strong memory management and exception handling reduce runtime errors.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-users"></i>
+            <h3>Large Community</h3>
+            <p>Millions of developers and vast libraries/frameworks help you build faster.</p>
+        </div>
+    </div>
+</section>
+<section id="about-site" class="about-section">
+    <h2>Why JavaRunner?</h2>
+    <p>Our platform is designed to help you learn, practice, and improve your Java skills efficiently.</p>
+    <div class="site-features">
+        <div class="feature-card">
+            <i class="fas fa-terminal"></i>
+            <h3>Dynamic Coding</h3>
+            <p>Run your Java code instantly using our interactive editor.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Learn Efficiently</h3>
+            <p>Practice with real examples and receive immediate feedback.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-trophy"></i>
+            <h3>Practice & Improve</h3>
+            <p>Keep experimenting and improving your skills with immediate feedback.</p>
+        </div>
+    </div>
+    <div class="cta-wrapper">
+        <a th:href="@{/practice}" class="btn-secondary">Start Practicing Now</a>
+    </div>
+</section>
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>JavaRunner</h3>
+            <p>Learn, practice, and run Java online anytime. Build your skills and track your progress.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/practice">Practice</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Follow Me</h4>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 JavaRunner. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+# Maven / Build
+/target/
+/*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE / Editor
+/.idea/
+/*.iml
+*.ipr
+*.iws
+/.vscode/
+/.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# Environment / Secrets
+.env
+*.pem
+*.key
+*.crt
+/src/main/resources/application.properties
+
+# Logs / Temp
+logs/
+*.tmp

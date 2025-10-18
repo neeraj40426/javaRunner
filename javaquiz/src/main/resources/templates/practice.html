@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Practice Java Questions</title>
+    <link rel="stylesheet" th:href="@{/css/practice.css}" />
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/clike/clike.min.js"></script>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="main-nav">
+    <div class="nav-container">
+        <a class="logo" th:href="@{/index}">JavaRunner</a>
+        <ul>
+            <li><a th:href="@{/index}">🏠 Home</a></li>
+            <li class="dropdown">
+                <a th:href="@{/practice}">📝 Practice</a>
+                <ul class="dropdown-menu">
+                    <li th:each="t : ${topics}">
+                        <a href="javascript:void(0)" th:attr="data-topic=${t.dbName}" th:text="${t.displayName}">Topic Name</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a th:href="@{/about}">ℹ️ About</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<h1>Java Practice Page</h1>
+
+<!-- Topic Bar -->
+<div class="topic-bar">
+    <button th:each="t : ${topics}"
+            th:attr="data-topic=${t.dbName}"
+            th:style="'background-color:' + ${t.color}"
+            class="topic-btn">
+        <span th:text="${t.icon}"></span>
+        <span th:text="${t.displayName}"></span>
+    </button>
+</div>
+
+<!-- Intro Section -->
+<div id="intro-section">
+    <p id="intro">
+        This page provides multiple types of Java questions with code solutions.
+        You can also run the code to tweak and learn interactively.
+    </p>
+</div>
+
+<!-- Question Section (hidden initially) -->
+<div id="question-section" style="display:none;">
+    <div id="questions-container"></div>
+</div>
+
+<script th:src="@{/js/practice.js}"></script>
+</body>
+</html>

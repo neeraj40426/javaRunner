@@ -1,0 +1,167 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Page header */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Intro paragraph */
+#intro {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Topic bar container */
+.topic-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+/* Topic buttons */
+.topic-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.topic-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Questions container */
+.question-card {
+    background: #1e1e1e;
+    color: #f5f5f5;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin: 20px 0;
+    padding: 15px;
+    font-family: monospace;
+}
+
+/* ========== Question Text ========== */
+.question-card p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* ========== Buttons ========== */
+.show-code-btn,
+.run-code-btn {
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.show-code-btn:hover,
+.run-code-btn:hover {
+    background-color: #005fa3;
+}
+
+/* ========== Editor Container ========== */
+.editor-container {
+    margin-top: 10px;
+    display: none; /* hidden initially, toggled by Show Code button */
+}
+
+/* CodeMirror itself */
+.CodeMirror {
+    height: 220px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* ========== Output ========== */
+.output {
+    background-color: #111;
+    color: #00ff88;
+    border-radius: 6px;
+    padding: 10px;
+    display:none;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    white-space: pre-wrap;
+    min-height: 40px;
+}
+.input{
+           background-color: #111;
+           color:white;
+           border-radius: 6px;
+}
+textarea.input {
+    width: 100%;          /* full width of the editor container */
+    height: 80px;        /* reasonable height for multi-line input */
+    resize: vertical;     /* user can only resize vertically */
+    padding: 8px;         /* some padding inside the box */
+    font-family: monospace; /* matches code style */
+    font-size: 14px;
+    box-sizing: border-box; /* ensures padding is included in width */
+}
+
+/* ========== General Layout ========== */
+#questions-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.topic-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.topic-btn {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.topic-btn:hover {
+    filter: brightness(1.1);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .topic-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .topic-btn {
+        width: 80%;
+        justify-content: center;
+    }
+}
