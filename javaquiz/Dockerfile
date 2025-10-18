@@ -1,24 +1,33 @@
-# Use official OpenJDK 17 image
-FROM openjdk:17-jdk-slim
+# Start from Maven + JDK 17 image
+FROM maven:3.9.3-eclipse-temurin-17 AS build
 
-# Set working directory inside the container
 WORKDIR /app
 
-# Copy Maven wrapper and project files
-COPY mvnw .
-COPY .mvn .mvn
+# Copy pom.xml and download dependencies first (for caching)
 COPY pom.xml .
-COPY src src
+RUN mvn dependency:go-offline -B
 
-# Make mvnw executable
-RUN chmod +x mvnw
+# Copy source code
+COPY src ./src
 
-# Build the project and skip tests (optional: remove -DskipTests for full build)
-RUN ./mvnw clean package -DskipTests
+# Build the jar without running tests
+RUN mvn clean package -DskipTests
 
-# Expose port the Spring Boot app will run on
-EXPOSE 8080
+# Second stage: slim image for runtime
+FROM eclipse-temurin:17-jdk-jammy
 
-# Run the built JAR file
-CMD ["java", "-jar", "target/javaquiz-0.0.1-SNAPSHOT.jar"]
+WORKDIR /app
+
+# Copy jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Expose port Render assigns via environment variable
+ENV PORT=10000
+EXPOSE $PORT
+
+# Spring Boot picks up $PORT
+ENV JAVA_OPTS=""
+
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Dserver.port=$PORT -jar app.jar"]
+
 
